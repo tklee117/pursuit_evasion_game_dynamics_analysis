@@ -54,25 +54,6 @@ python scripts/make_figures.py   # figures into outputs/, a few seconds
 python scripts/animate.py        # outputs/pursuit_evasion.gif, about 20 s
 ```
 
-## Reproducing the report
-
-The code was written from the equations and parameter table in the report; the original notebook was not kept. `scripts/run_analysis.py` prints:
-
-| Quantity | This code | Report |
-|---|---|---|
-| Eigenvalues of A = Dg(z*) | −0.5 ± 0.3536j, −0.5 ± 0.1021j | −0.5 ± 0.354j, −0.5 ± 0.102j |
-| Lyapunov matrix P | identical entries; eigenvalues 0.564 … 4.406 | same |
-| ROA level c* | 129.3 | 129.0 |
-| Picard error after 10 iterates | 2.4 × 10⁻⁵ | converged by φ₆–φ₇ |
-| L along the Picard trajectory | 1.045 | 1.0012 |
-| Continuous-dependence bound holds | yes, both experiments | yes |
-| 2‖PB‖₂ | 6.18 m | 8.74 m |
-
-Notes:
-- The ROA level is capped where the level set first reaches the frozen evader, where the pursuer law is singular; that cap, V(x_E*) = 129.3, matches the report's value.
-- With the report's P and B = [0; I], 2‖PB‖₂ = 6.18 m, not the 8.74 m stated in the report. The simulated steady-state deviation follows about 4μ for small μ, as in the report.
-- The speed-ratio sweep for the barrier function is in `analysis.speed_ratio_sweep`; the initial conditions behind the report's Fig. 15 are not listed in the report, so the 2.48 threshold is not regenerated here.
-
 ## Media
 
 - `media/pursuit_evasion_double_integrator.gif`: the three outcomes in the report's model (capture, zone breach, draw)
